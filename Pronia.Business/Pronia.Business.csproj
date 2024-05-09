@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Pronia.Data\Pronia.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Concretes\" />
+  </ItemGroup>
+
 </Project>

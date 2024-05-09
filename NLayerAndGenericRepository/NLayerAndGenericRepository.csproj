@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Views\ContactUs\" />
     <Folder Include="Views\Pages\" />
     <Folder Include="Views\Shop\" />
@@ -21,6 +20,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pronia.Business\Pronia.Business.csproj" />
   </ItemGroup>
 
 </Project>

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pronia.Core", "Pronia.Core\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pronia.Data", "Pronia.Data\Pronia.Data.csproj", "{9821C4A7-B737-462C-8EEF-D23C1F20DE30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pronia.Business", "Pronia.Business\Pronia.Business.csproj", "{385C8D46-433F-44EB-925A-909B05C46F09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9821C4A7-B737-462C-8EEF-D23C1F20DE30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9821C4A7-B737-462C-8EEF-D23C1F20DE30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9821C4A7-B737-462C-8EEF-D23C1F20DE30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{385C8D46-433F-44EB-925A-909B05C46F09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{385C8D46-433F-44EB-925A-909B05C46F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{385C8D46-433F-44EB-925A-909B05C46F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{385C8D46-433F-44EB-925A-909B05C46F09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

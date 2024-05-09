@@ -1,14 +1,14 @@
 ﻿using Pronia.Core.Models;
 using Pronia.Core.RepositoryAbstracts;
 using Pronia.Data.DAL;
-using ProniaMVCProject.Core.RepositoryAbstracts;
+using Pronia.Core.RepositoryAbstracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProniaMVCProject.Data.RepositoryConcretes
+namespace Pronia.Data.RepositoryConcretes
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity, new()
     {

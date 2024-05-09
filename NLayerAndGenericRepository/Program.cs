@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Pronia.Data.DAL;
 using System;
 
 namespace NLayerAndGenericRepository
@@ -13,7 +14,7 @@ namespace NLayerAndGenericRepository
 
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("default"));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
             var app = builder.Build();
@@ -23,14 +24,11 @@ namespace NLayerAndGenericRepository
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=home}/{action=index}/{id?}");
 
             app.Run();
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pronia.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,6 @@ namespace Pronia.Business.Services.Abstracts
         void UpdateCategory(int id, Category newCategory);
         Category GetCategory(Func<Category, bool>? predicate = null);
         List<Category> GetAllCategories(Func<Category, bool>? predicate = null);
+
     }
 }

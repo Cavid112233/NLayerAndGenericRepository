@@ -1,5 +1,5 @@
 ﻿using Pronia.Core.Models;
-using ProniaMVCProject.Core.RepositoryAbstracts;
+using Pronia.Core.RepositoryAbstracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,13 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Pronia.Business.Services.Abstracts;
 using System.Diagnostics;
 
 namespace NLayerAndGenericRepository.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IFeatureService _featureService;
+        public HomeController(IFeatureService featureService)
+        {
+            _featureService = featureService;
+        }
         public IActionResult Index()
         {
-            return View();
+            var features = _featureService.GetAllFeatures();
+            return View(features);
         }
     }
 }

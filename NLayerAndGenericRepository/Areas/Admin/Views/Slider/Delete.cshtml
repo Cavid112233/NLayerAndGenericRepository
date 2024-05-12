@@ -1,5 +1,21 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Slider
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form asp-action="DeletePost" method="post">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title"><img src="@Model.Icon" /></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@Model.Title</h6>
+                        <p class="card-text">@Model.Description</p>
+                        <a asp-action="index" asp-controller="feature" class="btn btn-outline-info">Go Back</a>
+                        <input asp-for="@Model.Id" hidden value="@Model.Id" />
+                        <button type="submit" href="#" class="btn btn-outline-danger">Delete</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

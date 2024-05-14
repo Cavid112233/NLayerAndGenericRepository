@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Pronia.Business\Pronia.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\sliders\" />
+  </ItemGroup>
+
 </Project>

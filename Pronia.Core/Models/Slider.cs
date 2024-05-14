@@ -12,13 +12,15 @@ namespace Pronia.Core.Models
     public class Slider : BaseEntity
     {
         [Required]
-        public string Sale { get; set; }
-        [StringLength(50)]
+        [StringLength(100)]
         public string Title { get; set; }
+        [Required]
+        [StringLength(150)]
         public string Description { get; set; }
-        public string ImageURL { get; set; } = null!;
+        public string? RedirectUrl { get; set; }
+        [StringLength(100)]
+        public string? ImageUrl { get; set; }
         [NotMapped]
-        public IFormFile ImageFile { get; set; }
-        public string? ButtonName { get; set; }
+        public IFormFile? ImageFile { get; set; }
     }
 }

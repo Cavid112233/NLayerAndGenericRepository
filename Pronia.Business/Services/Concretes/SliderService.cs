@@ -1,4 +1,7 @@
-﻿using Pronia.Business.Services.Abstracts;
+﻿using Microsoft.AspNetCore.Hosting;
+using Pronia.Business.Exceptions;
+using Pronia.Business.Extensions;
+using Pronia.Business.Services.Abstracts;
 using Pronia.Core.Models;
 using Pronia.Core.RepositoryAbstracts;
 using Pronia.Data.RepositoryConcretes;
@@ -12,15 +15,23 @@ namespace Pronia.Business.Services.Concretes
 {
     public class SliderService : ISliderService
     {
-        ISliderRepository _sliderRepository;
 
-        public SliderService(ISliderRepository sliderRepository)
+        private readonly ISliderRepository _sliderRepository;
+        private readonly IWebHostEnvironment _env;
+
+        public SliderService(ISliderRepository sliderRepository, IWebHostEnvironment env)
         {
             _sliderRepository = sliderRepository;
+            _env = env;
         }
 
-        public  async Task AddSlider(Slider slider)
+        public async Task AddSlider(Slider slider)
         {
+            if (slider.ImageFile == null)
+                throw new FileNullReferenceException("File bos ola bilmez!");
+
+            slider.ImageUrl = Helper.SaveFile(_env.WebRootPath, @"uploads\sliders", slider.ImageFile);
+
             await _sliderRepository.AddAsync(slider);
             await _sliderRepository.CommitAsync();
         }
@@ -28,16 +39,18 @@ namespace Pronia.Business.Services.Concretes
         public void DeleteSlider(int id)
         {
             var existSlider = _sliderRepository.Get(x => x.Id == id);
+            if (existSlider == null) throw new EntityNotFoundException("Slider tapilmadi");
 
-            if (existSlider == null) throw new NullReferenceException("Slider tapilmadi");
+            Helper.DeleteFile(_env.WebRootPath, @"uploads\sliders", existSlider.ImageUrl);
 
             _sliderRepository.Delete(existSlider);
             _sliderRepository.Commit();
+
         }
 
         public List<Slider> GetAllSliders(Func<Slider, bool>? predicate = null)
         {
-            return _sliderRepository.GetAll();
+            return _sliderRepository.GetAll(predicate);
         }
 
         public Slider GetSlider(Func<Slider, bool>? predicate = null)
@@ -48,15 +61,23 @@ namespace Pronia.Business.Services.Concretes
         public void UpdateSlider(int id, Slider newSlider)
         {
             var oldSlider = _sliderRepository.Get(x => x.Id == id);
+            if (oldSlider == null) throw new EntityNotFoundException("Slider tapilmadi!");
 
-            if (oldSlider == null) throw new NullReferenceException("Slider tapilmadi");
+            if (newSlider.ImageFile != null)
+            {
+
+                Helper.DeleteFile(_env.WebRootPath, @"uploads\sliders", oldSlider.ImageUrl);
+
+                oldSlider.ImageUrl = Helper.SaveFile(_env.WebRootPath, @"uploads\sliders", newSlider.ImageFile);
+
+            }
 
             oldSlider.Title = newSlider.Title;
-            oldSlider.ImageURL = newSlider.ImageURL;
-            oldSlider.Sale = newSlider.Sale;
-            oldSlider.ButtonName = newSlider.ButtonName;
             oldSlider.Description = newSlider.Description;
+            oldSlider.RedirectUrl = newSlider.RedirectUrl;
+
             _sliderRepository.Commit();
+
         }
     }
 }

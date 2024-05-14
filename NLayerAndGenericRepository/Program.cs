@@ -24,11 +24,13 @@ namespace NLayerAndGenericRepository
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IFeatureService, FeatureService>();
             builder.Services.AddScoped<ITagService, TagService>();
+            builder.Services.AddScoped<ISliderService, SliderService>();
 
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<IFeatureRepository, FeatureRepository>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<ITagRepository, TagRepository>();
+            builder.Services.AddScoped<ISliderRepository, SliderRepository>();
 
             var app = builder.Build();
 

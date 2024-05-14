@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Pronia.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Pronia.Data.DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions options) : base(options) 
         { 
@@ -18,5 +19,6 @@ namespace Pronia.Data.DAL
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Feature> Features { get; set; }
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }    
     }
 }

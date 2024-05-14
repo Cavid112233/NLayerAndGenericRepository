@@ -64,7 +64,6 @@ namespace NLayerAndGenericRepository.Areas.Admin.Controllers
             var existSlider = _sliderService.GetSlider(x => x.Id == id);
             if (existSlider == null) return NotFound();
             return View(existSlider);
-
         }
 
         [HttpPost]
